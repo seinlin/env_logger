@@ -1,1 +1,0 @@
-initSidebarItems({"fn":[["test",""]],"struct":[["TestArgs",""]],"type":[["Feature",""]]});
