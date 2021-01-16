@@ -1279,7 +1279,6 @@
 <span id="1278">1278</span>
 <span id="1279">1279</span>
 <span id="1280">1280</span>
-<span id="1281">1281</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="comment">// Copyright 2014-2015 The Rust Project Developers. See the COPYRIGHT</span>
 <span class="comment">// file at the top-level directory of this distribution and at</span>
@@ -1555,12 +1554,11 @@
     <span class="ident">html_logo_url</span> <span class="op">=</span> <span class="string">&quot;https://www.rust-lang.org/logos/rust-logo-128x128-blk-v2.png&quot;</span>,
     <span class="ident">html_favicon_url</span> <span class="op">=</span> <span class="string">&quot;https://www.rust-lang.org/static/images/favicon.ico&quot;</span>
 )]</span>
-<span class="attribute">#![<span class="ident">cfg_attr</span>(<span class="ident">test</span>, <span class="ident">deny</span>(<span class="ident">warnings</span>))]</span>
 <span class="comment">// When compiled for the rustc compiler itself we want to make sure that this is</span>
 <span class="comment">// an unstable crate</span>
 <span class="attribute">#![<span class="ident">cfg_attr</span>(<span class="ident">rustbuild</span>, <span class="ident">feature</span>(<span class="ident">staged_api</span>, <span class="ident">rustc_private</span>))]</span>
 <span class="attribute">#![<span class="ident">cfg_attr</span>(<span class="ident">rustbuild</span>, <span class="ident">unstable</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;rustc_private&quot;</span>, <span class="ident">issue</span> <span class="op">=</span> <span class="string">&quot;27812&quot;</span>))]</span>
-<span class="attribute">#![<span class="ident">deny</span>(<span class="ident">missing_debug_implementations</span>, <span class="ident">missing_docs</span>, <span class="ident">warnings</span>)]</span>
+<span class="attribute">#![<span class="ident">deny</span>(<span class="ident">missing_debug_implementations</span>, <span class="ident">missing_docs</span>)]</span>
 
 <span class="kw">use</span> <span class="ident">std</span>::{<span class="ident">borrow</span>::<span class="ident">Cow</span>, <span class="ident">cell</span>::<span class="ident">RefCell</span>, <span class="ident">env</span>, <span class="ident">io</span>};
 
