@@ -741,7 +741,7 @@
     <span class="doccomment">/// });</span>
     <span class="doccomment">/// ```</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_color</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">color</span>: <span class="ident">Color</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Style</span> {
-        <span class="self">self</span>.<span class="ident">spec</span>.<span class="ident">set_fg</span>(<span class="ident">color</span>.<span class="ident">into_termcolor</span>());
+        <span class="self">self</span>.<span class="ident">spec</span>.<span class="ident">set_fg</span>(<span class="prelude-val">Some</span>(<span class="ident">color</span>.<span class="ident">into_termcolor</span>()));
         <span class="self">self</span>
     }
 
@@ -820,7 +820,7 @@
     <span class="doccomment">/// });</span>
     <span class="doccomment">/// ```</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">set_bg</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">color</span>: <span class="ident">Color</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Style</span> {
-        <span class="self">self</span>.<span class="ident">spec</span>.<span class="ident">set_bg</span>(<span class="ident">color</span>.<span class="ident">into_termcolor</span>());
+        <span class="self">self</span>.<span class="ident">spec</span>.<span class="ident">set_bg</span>(<span class="prelude-val">Some</span>(<span class="ident">color</span>.<span class="ident">into_termcolor</span>()));
         <span class="self">self</span>
     }
 
@@ -953,18 +953,18 @@
 }
 
 <span class="kw">impl</span> <span class="ident">Color</span> {
-    <span class="kw">fn</span> <span class="ident">into_termcolor</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">termcolor</span>::<span class="ident">Color</span><span class="op">&gt;</span> {
+    <span class="kw">fn</span> <span class="ident">into_termcolor</span>(<span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">termcolor</span>::<span class="ident">Color</span> {
         <span class="kw">match</span> <span class="self">self</span> {
-            <span class="ident">Color</span>::<span class="ident">Black</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">termcolor</span>::<span class="ident">Color</span>::<span class="ident">Black</span>),
-            <span class="ident">Color</span>::<span class="ident">Blue</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">termcolor</span>::<span class="ident">Color</span>::<span class="ident">Blue</span>),
-            <span class="ident">Color</span>::<span class="ident">Green</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">termcolor</span>::<span class="ident">Color</span>::<span class="ident">Green</span>),
-            <span class="ident">Color</span>::<span class="ident">Red</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">termcolor</span>::<span class="ident">Color</span>::<span class="ident">Red</span>),
-            <span class="ident">Color</span>::<span class="ident">Cyan</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">termcolor</span>::<span class="ident">Color</span>::<span class="ident">Cyan</span>),
-            <span class="ident">Color</span>::<span class="ident">Magenta</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">termcolor</span>::<span class="ident">Color</span>::<span class="ident">Magenta</span>),
-            <span class="ident">Color</span>::<span class="ident">Yellow</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">termcolor</span>::<span class="ident">Color</span>::<span class="ident">Yellow</span>),
-            <span class="ident">Color</span>::<span class="ident">White</span> <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">termcolor</span>::<span class="ident">Color</span>::<span class="ident">White</span>),
-            <span class="ident">Color</span>::<span class="ident">Ansi256</span>(<span class="ident">value</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">termcolor</span>::<span class="ident">Color</span>::<span class="ident">Ansi256</span>(<span class="ident">value</span>)),
-            <span class="ident">Color</span>::<span class="ident">Rgb</span>(<span class="ident">r</span>, <span class="ident">g</span>, <span class="ident">b</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">Some</span>(<span class="ident">termcolor</span>::<span class="ident">Color</span>::<span class="ident">Rgb</span>(<span class="ident">r</span>, <span class="ident">g</span>, <span class="ident">b</span>)),
+            <span class="ident">Color</span>::<span class="ident">Black</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">termcolor</span>::<span class="ident">Color</span>::<span class="ident">Black</span>,
+            <span class="ident">Color</span>::<span class="ident">Blue</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">termcolor</span>::<span class="ident">Color</span>::<span class="ident">Blue</span>,
+            <span class="ident">Color</span>::<span class="ident">Green</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">termcolor</span>::<span class="ident">Color</span>::<span class="ident">Green</span>,
+            <span class="ident">Color</span>::<span class="ident">Red</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">termcolor</span>::<span class="ident">Color</span>::<span class="ident">Red</span>,
+            <span class="ident">Color</span>::<span class="ident">Cyan</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">termcolor</span>::<span class="ident">Color</span>::<span class="ident">Cyan</span>,
+            <span class="ident">Color</span>::<span class="ident">Magenta</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">termcolor</span>::<span class="ident">Color</span>::<span class="ident">Magenta</span>,
+            <span class="ident">Color</span>::<span class="ident">Yellow</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">termcolor</span>::<span class="ident">Color</span>::<span class="ident">Yellow</span>,
+            <span class="ident">Color</span>::<span class="ident">White</span> <span class="op">=</span><span class="op">&gt;</span> <span class="ident">termcolor</span>::<span class="ident">Color</span>::<span class="ident">White</span>,
+            <span class="ident">Color</span>::<span class="ident">Ansi256</span>(<span class="ident">value</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">termcolor</span>::<span class="ident">Color</span>::<span class="ident">Ansi256</span>(<span class="ident">value</span>),
+            <span class="ident">Color</span>::<span class="ident">Rgb</span>(<span class="ident">r</span>, <span class="ident">g</span>, <span class="ident">b</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">termcolor</span>::<span class="ident">Color</span>::<span class="ident">Rgb</span>(<span class="ident">r</span>, <span class="ident">g</span>, <span class="ident">b</span>),
         }
     }
 }
