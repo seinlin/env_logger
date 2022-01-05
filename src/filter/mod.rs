@@ -204,7 +204,14 @@ impl Builder {
     /// If no module is provided then the filter will apply to all log messages.
     pub fn filter(&mut self, module: Option<&str>, level: LevelFilter) -> &mut Self {
         self.directives.push(Directive {
-            name: module.map(|s| s.to_string()),
+            name: module.map(|s| {
+                    let ss: Vec<&str> = s.split("::").collect();
+                    if ss.len() > 1 {
+                        ss[1].to_string()
+                    } else {
+                        ss[0].to_string()
+                    }
+                }),
             level,
         });
         self
@@ -336,7 +343,14 @@ fn parse_spec(spec: &str) -> (Vec<Directive>, Option<inner::Filter>) {
                     }
                 };
             dirs.push(Directive {
-                name: name.map(|s| s.to_string()),
+                name: name.map(|s| {
+                        let ss: Vec<&str> = s.split("::").collect();
+                        if ss.len() > 1 {
+                            ss[1].to_string()
+                        } else {
+                            ss[0].to_string()
+                        }
+                    }),
                 level: log_level,
             });
         }
