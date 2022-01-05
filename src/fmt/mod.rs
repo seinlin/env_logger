@@ -305,7 +305,8 @@ impl<'a> DefaultFormat<'a> {
         }
 
         if let Some(module_path) = record.module_path() {
-            self.write_header_value(module_path)
+            let m: Vec<&str> = module_path.split("::").collect();
+            self.write_header_value(m[0])
         } else {
             Ok(())
         }
